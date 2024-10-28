@@ -75,7 +75,6 @@ if __name__ == "__main__":
         elif 'date' in command:
             current_date = get_date()
             speak(f"Today's date is {current_date}")
-            print("Today's date is {current_date}")
         elif 'spotify' in command:
             open_spotify()
             speak("Opening Spotify")
