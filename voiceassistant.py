@@ -3,15 +3,23 @@ import pyttsx3
 import datetime
 import webbrowser
 import subprocess
-
+import random
 # Initialize the speech engine
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 
+jokes = ("Why don’t scientists trust atoms? Because they make up everything!", "What do you get if you cross a snowman and a vampire? Frostbite!", "Why don’t skeletons fight each other? They don’t have the guts.", "Why was the math book sad? It had too many problems.", "What do you call fake spaghetti? An impasta!", "Why did the scarecrow win an award? Because he was outstanding in his field!", "Why don’t some couples go to the gym? Because some relationships don’t work out.", "Why did the bicycle fall over? It was two-tired!", "What do you call cheese that isn't yours? Nacho cheese!", "Why couldn't the leopard play hide and seek? Because he was always spotted!", "Why are elevator jokes so classic and good? They work on many levels.", "What’s orange and sounds like a parrot? A carrot!", "How do you organize a space party? You planet!", "Why was the computer cold? It left its Windows open!", "Why don’t oysters share their pearls? Because they’re shellfish!", "Why did the coffee file a police report? It got mugged!")
+
 def speak(text):
     engine.say(text)
     engine.runAndWait()
+    
+
+def tell_joke():
+    joke = random.choice(jokes)
+    speak(joke)
+    print(joke)
 
 def greet():
     current_hour = datetime.datetime.now().hour
@@ -75,6 +83,7 @@ if __name__ == "__main__":
         elif 'date' in command:
             current_date = get_date()
             speak(f"Today's date is {current_date}")
+            print("Today's date is {current_date}")
         elif 'spotify' in command:
             open_spotify()
             speak("Opening Spotify")
@@ -89,6 +98,9 @@ if __name__ == "__main__":
         elif 'youtube' in command:
             open_youtube()
             speak("opening youtube!")
+        elif 'joke' in command:
+            tell_joke()
+        
         elif 'exit' in command or 'quit' in command:
             speak("Goodbye!")
             break
