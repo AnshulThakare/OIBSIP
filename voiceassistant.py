@@ -4,7 +4,7 @@ import datetime
 import webbrowser
 import subprocess
 import random
-# Initialize the speech engine
+# Initializing the speech engine
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
